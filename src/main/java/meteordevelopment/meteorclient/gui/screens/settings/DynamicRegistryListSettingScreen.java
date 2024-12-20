@@ -97,7 +97,7 @@ public abstract class DynamicRegistryListSettingScreen<E> extends WindowScreen {
             try {
                 Identifier id = entry.contains(":") ? Identifier.of(entry) : Identifier.ofVanilla(entry);
                 addValue(RegistryKey.of(registryKey, id));
-            } catch (InvalidIdentifierException ignored) {}
+            } catch (InvalidIdentifierException e) {}
         };
 
         table.add(theme.verticalSeparator()).expandWidgetY();

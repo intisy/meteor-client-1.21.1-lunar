@@ -45,7 +45,7 @@ public class SimpleBlockRenderer {
 
         VertexConsumer consumer = consumerProvider.getBuffer(RenderLayer.getSolid());
         BakedModel model = mc.getBlockRenderManager().getModel(state);
-        Vec3d offset = state.getModelOffset(pos);
+        Vec3d offset = state.getModelOffset(mc.world, pos);
 
         float offsetX = (float) offset.x;
         float offsetY = (float) offset.y;

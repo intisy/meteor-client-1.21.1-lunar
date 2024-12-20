@@ -509,13 +509,10 @@ public class MeteorStarscript {
         if (mc.player == null || mc.world == null) return Value.string("");
 
         BP.set(mc.player.getX(), mc.player.getY(), mc.player.getZ());
-        return mc.world.getRegistryManager().getOptional(RegistryKeys.BIOME)
-            .map(biomeRegistry -> {
-                Identifier id = biomeRegistry.getId(mc.world.getBiome(BP).value());
-                if (id == null) return Value.string("Unknown");
-                return Value.string(Arrays.stream(id.getPath().split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")));
-            })
-            .orElse(Value.string("Unknown"));
+        Identifier id = mc.world.getRegistryManager().get(RegistryKeys.BIOME).getId(mc.world.getBiome(BP).value());
+        if (id == null) return Value.string("Unknown");
+
+        return Value.string(Arrays.stream(id.getPath().split("_")).map(StringUtils::capitalize).collect(Collectors.joining(" ")));
     }
 
     private static Value handOrOffhand() {
