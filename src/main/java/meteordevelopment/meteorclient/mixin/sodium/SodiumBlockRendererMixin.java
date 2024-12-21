@@ -5,8 +5,8 @@
 
 package meteordevelopment.meteorclient.mixin.sodium;
 
+import me.jellysquid.mods.sodium.client.render.chunk.compile.pipeline.BlockRenderer;
 import meteordevelopment.meteorclient.systems.modules.render.Xray;
-import net.caffeinemc.mods.sodium.client.render.chunk.compile.pipeline.BlockRenderer;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.util.math.BlockPos;

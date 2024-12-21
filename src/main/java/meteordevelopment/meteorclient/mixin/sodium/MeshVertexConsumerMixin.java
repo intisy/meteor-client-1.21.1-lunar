@@ -6,10 +6,10 @@
 package meteordevelopment.meteorclient.mixin.sodium;
 
 import meteordevelopment.meteorclient.utils.render.MeshVertexConsumerProvider;
+import net.caffeinemc.mods.sodium.api.vertex.attributes.CommonVertexAttribute;
 import net.caffeinemc.mods.sodium.api.vertex.buffer.VertexBufferWriter;
+import net.caffeinemc.mods.sodium.api.vertex.format.VertexFormatDescription;
 import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexFormat;
-import net.minecraft.client.render.VertexFormatElement;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,8 +17,8 @@ import org.spongepowered.asm.mixin.Mixin;
 @Mixin(value = MeshVertexConsumerProvider.MeshVertexConsumer.class, remap = false)
 public abstract class MeshVertexConsumerMixin implements VertexConsumer, VertexBufferWriter {
     @Override
-    public void push(MemoryStack stack, long ptr, int count, VertexFormat format) {
-        int positionOffset = format.getOffset(VertexFormatElement.POSITION);
+    public void push(MemoryStack stack, long ptr, int count, VertexFormatDescription format) {
+        int positionOffset = format.getElementOffset(CommonVertexAttribute.POSITION);
 
         if (positionOffset == -1) return;
 
